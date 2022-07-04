@@ -5,7 +5,6 @@ const prisma = new PrismaClient();
 export default async function handler(req, res) {
     if (req.method === 'POST') {
         try {
-            console.log(req.body)
             const { id, title, options, visibility, createdBy } = req.body;
             const poll = await prisma.poll.create({
                 data: {

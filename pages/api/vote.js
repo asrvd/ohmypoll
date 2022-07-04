@@ -5,7 +5,6 @@ const prisma = new PrismaClient();
 export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
-      console.log(req.body);
       const { id } = req.body;
       const vote = await prisma.option.update({
         where: {

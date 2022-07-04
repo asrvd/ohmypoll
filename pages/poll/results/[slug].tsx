@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { Props } from "../[slug]";
 import { Option } from "@prisma/client";
+import SiteFooter from "../../../components/footer";
 
 const prisma = new PrismaClient();
 
@@ -54,23 +55,22 @@ export default function Results({ poll, options }: Props) {
   const totalVotes = options.reduce((acc, option) => {
     return acc + option.votes;
   }, 0);
-  console.log(totalVotes);
   return (
     <div className="flex flex-col justify-center items-center w-screen h-screen p-3 font-mono relative">
-      <div className="flex flex-col justify-center items-center w-1/2 h-2/3 p-2 gap-3">
+      <div className="flex flex-col justify-center items-left w-full h-full lg:w-2/3 md:w-2/3 lg:h-2/3 p-2 gap-3">
         <h1 className="text-2xl font-bold">
           {poll?.title}{" "}
           <span className="text-sm text-gray-500 underline decoration-dotted underline-offset-2">
             {poll?.visibility}
           </span>
         </h1>
-        <div className="grid gap-3 grid-cols-2 grid-rows-2 w-full">
+        <div className="grid gap-3 grid-cols-2 w-full">
           {options?.map((option: Option) => {
             return (
               <div key={option.id} className="flex flex-col">
                 <label htmlFor="poll-result-bar">{option.votes} votes</label>
                 <button
-                  className={`flex justify-between items-center rounded ring-2 ring-green-500 px-4 py-2 w-full cursor-default h-full poll-result-bar`}
+                  className={`flex shadow-md justify-between items-center rounded ring-2 ring-green-500 px-4 py-2 w-full cursor-default h-full poll-result-bar`}
                   key={option.id}
                   name='poll-result-bar'
                   style={{
@@ -82,32 +82,33 @@ export default function Results({ poll, options }: Props) {
                       }%, #4ade80 100%)`,
                   }}
                 >
-                  <span>{option.number}.</span>
-                  <h2 className="text-md font-mono font-bold">{option.text}</h2>
-                  <span>{Math.round((100 * option.votes) / totalVotes)}%</span>
+                  <span className="text-sm lg:text-md md:text-md font-mono font-bold">{option.number}.</span>
+                  <h2 className="text-sm lg:text-md md:text-md font-mono font-bold">{option.text}</h2>
+                  <span className="text-sm lg:text-md md:text-md font-mono font-bold">{Math.round((100 * option.votes) / totalVotes)}%</span>
                 </button>
               </div>
             );
           })}
         </div>
-        <p className="text-sm flex-wrap justify-center items-center w-screen text-center absolute bottom-0 p-3">
-          <span className="text-gray-500 underline decoration-dotted underline-offset-2">
+        <p className="text-[0.65rem] lg:text-sm md:text-sm flex-wrap justify-center self-center items-center w-screen text-center absolute bottom-8 p-2">
+          <span className="text-gray-500 text-[0.65rem] lg:text-sm md:text-sm underline decoration-dotted underline-offset-2">
             created by
           </span>{" "}
           {poll?.createdBy}
           {" | "}
-          <span className="text-gray-500 underline decoration-dotted underline-offset-2">
+          <span className="text-gray-500 text-[0.65rem] lg:text-sm md:text-sm underline decoration-dotted underline-offset-2">
             upvotes
           </span>{" "}
           {poll?.upvotes}
           {" | "}
-          <span className="text-gray-500 underline decoration-dotted underline-offset-2">
+          <span className="text-gray-500 text-[0.65rem] lg:text-sm md:text-sm underline decoration-dotted underline-offset-2">
             created on
           </span>{" "}
           {new Date(poll?.createdAt).toLocaleDateString()}{" "}
           {new Date(poll?.createdAt).toLocaleTimeString()}
         </p>
       </div>
+      <SiteFooter />
     </div>
   );
 }

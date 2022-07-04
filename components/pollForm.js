@@ -19,9 +19,8 @@ const PollForm = ({ redirectPath = "", onSubmit = () => null }) => {
       setDisabled(true);
 
       if (typeof onSubmit === "function") {
-        if (options.length >= 2) {
+        if (options.length >= 2 && options.length <= 6) {
           toastId = toast.loading("Creating poll...");
-          console.log(options);
           await onSubmit({
             title: question,
             options: options,
@@ -35,9 +34,14 @@ const PollForm = ({ redirectPath = "", onSubmit = () => null }) => {
           });
           router.push(redirectPath);
         } else {
-          //   console.log("i love you");
-          toast.error("Please add at least two options");
-          setDisabled(false);
+          if (options.length < 2) {
+            //   console.log("i love you");
+            toast.error("Please add at least two options!");
+            setDisabled(false);
+          } else if (options.length > 6) {
+            toast.error("You can add at most six options!");
+            setDisabled(false);
+          }
         }
 
         // await onSubmit({ ...values, createdBy: cBy, visibility: visibility });

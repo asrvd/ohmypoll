@@ -1,11 +1,11 @@
 export function addNewUpVote(pollID: string) {
   const allUpVotes = localStorage.getItem("upvotes");
   if (allUpVotes) {
-    const votes = JSON.parse(allUpVotes);
-    votes.push(pollID);
-    localStorage.setItem("upvotes", JSON.stringify(votes));
-    
+    const upvotes = JSON.parse(allUpVotes);
+    upvotes.push(pollID);
+    localStorage.setItem("upvotes", JSON.stringify(upvotes));
+
+  } else {
+    localStorage.setItem("upvotes", JSON.stringify([pollID]));
   }
-  localStorage.setItem("upvotes", JSON.stringify([pollID]));
-  console.log("upvote added");
 }
