@@ -82,7 +82,7 @@ export default function Results({ poll, options }: Props) {
                 <button
                   className={`flex shadow-md justify-between items-center rounded ring-2 ring-green-500 px-4 py-2 w-full cursor-default h-full poll-result-bar`}
                   key={option.id}
-                  name='poll-result-bar'
+                  name="poll-result-bar"
                   style={{
                     backgroundImage:
                       `linear-gradient(to right, #22c55e 0%, #22c55e ${
@@ -92,9 +92,15 @@ export default function Results({ poll, options }: Props) {
                       }%, #4ade80 100%)`,
                   }}
                 >
-                  <span className="text-sm lg:text-md md:text-md font-mono font-bold">{option.number}.</span>
-                  <h2 className="text-sm lg:text-md md:text-md font-mono font-bold">{option.text}</h2>
-                  <span className="text-sm lg:text-md md:text-md font-mono font-bold">{Math.round((100 * option.votes) / totalVotes)}%</span>
+                  <span className="text-sm lg:text-md md:text-md font-mono font-bold">
+                    {option.number}.
+                  </span>
+                  <h2 className="text-sm lg:text-md md:text-md font-mono font-bold">
+                    {option.text}
+                  </h2>
+                  <span className="text-sm lg:text-md md:text-md font-mono font-bold">
+                    {Math.round((100 * option.votes) / totalVotes)}%
+                  </span>
                 </button>
               </div>
             );

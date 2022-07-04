@@ -9,6 +9,6 @@ const SiteFooter = () => {
       </p>
     </div>
   );
-}
+};
 
 export default SiteFooter;

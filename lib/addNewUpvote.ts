@@ -4,7 +4,6 @@ export function addNewUpVote(pollID: string) {
     const upvotes = JSON.parse(allUpVotes);
     upvotes.push(pollID);
     localStorage.setItem("upvotes", JSON.stringify(upvotes));
-
   } else {
     localStorage.setItem("upvotes", JSON.stringify([pollID]));
   }
