@@ -57,12 +57,13 @@ export default function Results({ poll, options }: Props) {
     return acc + option.votes;
   }, 0);
   return (
-    <div className="flex flex-col justify-center items-center w-screen h-screen p-3 font-mono relative">
-      <div className="absolute text-green-500 top-0 p-2 flex justify-left text-sm items-left w-full h-full lg:w-2/3 md:w-2/3 lg:h-2/3">
+    <div className="flex flex-col justify-center items-center w-screen h-screen p-3 font-sans relative">
+      <div className="absolute text-green-500 top-0 p-2 flex justify-left text-sm items-left w-full lg:w-2/3 md:w-2/3">
         <Link href="/">
           <a>
-            ../<span className="cursor-default text-gray-400">
-              poll/results/{poll?.id}
+            . . /{" "}
+            <span className="cursor-default text-gray-400">
+              poll / results / {poll?.id}
             </span>
           </a>
         </Link>
@@ -92,13 +93,13 @@ export default function Results({ poll, options }: Props) {
                       }%, #4ade80 100%)`,
                   }}
                 >
-                  <span className="text-sm lg:text-md md:text-md font-mono font-bold">
+                  <span className="text-sm lg:text-md md:text-md font-sans font-bold">
                     {option.number}.
                   </span>
-                  <h2 className="text-sm lg:text-md md:text-md font-mono font-bold">
+                  <h2 className="text-sm lg:text-md md:text-md font-sans font-bold">
                     {option.text}
                   </h2>
-                  <span className="text-sm lg:text-md md:text-md font-mono font-bold">
+                  <span className="text-sm lg:text-md md:text-md font-sans font-bold">
                     {Math.round((100 * option.votes) / totalVotes)}%
                   </span>
                 </button>

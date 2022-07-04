@@ -71,7 +71,7 @@ const PollForm = ({ redirectPath = "", onSubmit = () => null }) => {
       onSubmit={handleSubmit}
     >
       {({ isSubmitting, isValid }) => (
-        <Form className="flex flex-col gap-3 w-full h-full font-mono">
+        <Form className="flex flex-col gap-3 w-full h-full font-sans">
           <div className="form-group flex flex-col w-full">
             <label htmlFor="question">Question</label>
             <input
