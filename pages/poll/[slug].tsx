@@ -33,7 +33,7 @@ export async function getStaticPaths() {
         slug: poll.id,
       },
     })),
-    fallback: false,
+    fallback: true,
   };
 }
 
@@ -122,6 +122,15 @@ export default function PollPage(props: Props) {
       toast.error("You have already upvoted this poll!");
     }
   };
+
+  if (router.isFallback) {
+    return (
+      <div className="flex flec-col justify-center items-center w-screen h-screen">
+        Loading...
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col justify-center items-center w-screen h-screen p-3 font-sans relative">
       <div className="absolute text-green-500 top-0 p-2 flex justify-left text-sm items-left w-full lg:w-2/3 md:w-2/3">

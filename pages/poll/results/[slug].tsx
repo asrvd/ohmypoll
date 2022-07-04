@@ -3,6 +3,7 @@ import { Props } from "../[slug]";
 import { Option } from "@prisma/client";
 import SiteFooter from "../../../components/footer";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const prisma = new PrismaClient();
 
@@ -19,7 +20,7 @@ export async function getStaticPaths() {
         slug: poll.id,
       },
     })),
-    fallback: false,
+    fallback: true,
   };
 }
 
@@ -56,6 +57,14 @@ export default function Results({ poll, options }: Props) {
   const totalVotes = options.reduce((acc, option) => {
     return acc + option.votes;
   }, 0);
+  const router = useRouter();
+  if (router.isFallback) {
+    return (
+      <div className="flex flec-col justify-center items-center w-screen h-screen">
+        Loading...
+      </div>
+    );
+  }
   return (
     <div className="flex flex-col justify-center items-center w-screen h-screen p-3 font-sans relative">
       <div className="absolute text-green-500 top-0 p-2 flex justify-left text-sm items-left w-full lg:w-2/3 md:w-2/3">
