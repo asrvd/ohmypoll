@@ -54,7 +54,7 @@ export async function getStaticProps({ params }: any) {
 }
 
 export default function Results({ poll, options }: Props) {
-  const totalVotes = options.reduce((acc, option) => {
+  const totalVotes = options?.reduce((acc, option) => {
     return acc + option.votes;
   }, 0);
   const router = useRouter();
