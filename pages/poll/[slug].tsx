@@ -18,7 +18,7 @@ const prisma = new PrismaClient();
 export type Props = {
   poll: Poll;
   options: Option[];
-};
+}
 
 export async function getStaticPaths() {
   const polls = await prisma.poll.findMany({
@@ -70,11 +70,11 @@ export default function PollPage(props: Props) {
   const router = useRouter();
   const [hasVoted, setHasVoted] = useState(false);
   const [hasUpVoted, setHasUpVoted] = useState(false);
-  const [upvotes, setUpvotes] = useState(props?.poll.upvotes);
+  const [upvotes, setUpvotes] = useState(props?.poll?.upvotes);
   useEffect(() => {
-    setHasUpVoted(checkForUpVote(props.poll.id));
-    setHasVoted(checkForVote(props.poll.id));
-  }, [props.poll.id]);
+    setHasUpVoted(checkForUpVote(props?.poll?.id));
+    setHasVoted(checkForVote(props?.poll?.id));
+  }, [props?.poll?.id]);
   const addVote = (id: number, pollId: string) => {
     if (hasVoted !== true) {
       addNewVote(pollId);
@@ -138,20 +138,20 @@ export default function PollPage(props: Props) {
           <a>
             . . /{" "}
             <span className="cursor-default text-gray-400">
-              poll / {props?.poll.id}
+              poll / {props?.poll?.id}
             </span>
           </a>
         </Link>
       </div>
       <div className="flex flex-col justify-center items-left w-full h-full lg:w-2/3 md:w-2/3 lg:h-2/3 p-2 gap-3">
         <h1 className="text-xl lg:text-2xl font-bold">
-          {props?.poll.title}{" "}
+          {props?.poll?.title}{" "}
           <span className="text-sm text-gray-500 underline decoration-dotted underline-offset-2">
-            {props?.poll.visibility}
+            {props?.poll?.visibility}
           </span>
         </h1>
         <div className="grid gap-3 grid-cols-2 w-full">
-          {props?.options.map((option: Option) => {
+          {props?.options?.map((option: Option) => {
             return (
               <button
                 onClick={() => addVote(option.id, option.pollID)}
@@ -173,7 +173,7 @@ export default function PollPage(props: Props) {
             <>
               <p
                 className="text-gray-500 underline decoration-dotted underline-offset-2 cursor-pointer"
-                onClick={() => router.push(`/poll/results/${props?.poll.id}`)}
+                onClick={() => router.push(`/poll/results/${props?.poll?.id}`)}
               >
                 view results
               </p>
@@ -182,7 +182,7 @@ export default function PollPage(props: Props) {
           )}
           <p
             className="cursor-pointer"
-            onClick={() => addUpVote(props?.poll.id)}
+            onClick={() => addUpVote(props?.poll?.id)}
           >
             {upvotes}△{" "}
             <span className="text-gray-500 underline decoration-dotted underline-offset-2">
@@ -194,13 +194,13 @@ export default function PollPage(props: Props) {
           <span className="text-gray-500 underline decoration-dotted underline-offset-2">
             created by
           </span>{" "}
-          {props?.poll.createdBy}
+          {props?.poll?.createdBy}
           {" | "}
           <span className="text-gray-500 underline decoration-dotted underline-offset-2">
             created on
           </span>{" "}
-          {new Date(props?.poll.createdAt).toLocaleDateString()}{" "}
-          {new Date(props?.poll.createdAt).toLocaleTimeString()}
+          {new Date(props?.poll?.createdAt).toLocaleDateString()}{" "}
+          {new Date(props?.poll?.createdAt).toLocaleTimeString()}
         </p>
       </div>
       <SiteFooter />
