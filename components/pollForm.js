@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import * as Yup from "yup";
 import { toast } from "react-hot-toast";
 import { Formik, Form } from "formik";
+import { FiPlus, FiX } from "react-icons/fi";
 
 const PollForm = ({ redirectPath = "", onSubmit = () => null }) => {
   const router = useRouter();
@@ -20,19 +20,24 @@ const PollForm = ({ redirectPath = "", onSubmit = () => null }) => {
 
       if (typeof onSubmit === "function") {
         if (options.length >= 2 && options.length <= 6) {
-          toastId = toast.loading("Creating poll...");
-          await onSubmit({
-            title: question,
-            options: options,
-            visibility: visibility,
-            createdBy: cBy,
-          });
-          toast.success("Poll created successfully!", {
-            autoClose: 3000,
-            closeButton: false,
-            id: toastId,
-          });
-          router.push(redirectPath);
+          if (question.length > 0) {
+            toastId = toast.loading("Creating poll...");
+            await onSubmit({
+              title: question,
+              options: options,
+              visibility: visibility,
+              createdBy: cBy,
+            });
+            toast.success("Poll created successfully!", {
+              autoClose: 3000,
+              closeButton: false,
+              id: toastId,
+            });
+            router.push(redirectPath);
+          } else {
+            toast.error("Please add a question!");
+            setDisabled(false);
+          }
         } else {
           if (options.length < 2) {
             //   console.log("i love you");
@@ -66,9 +71,9 @@ const PollForm = ({ redirectPath = "", onSubmit = () => null }) => {
       onSubmit={handleSubmit}
     >
       {({ isSubmitting, isValid }) => (
-        <Form className="flex flex-col gap-3 w-full font-mono">
+        <Form className="flex flex-col gap-3 w-full h-full font-mono">
           <div className="form-group flex flex-col w-full">
-            <label htmlFor="question">Question *</label>
+            <label htmlFor="question">Question</label>
             <input
               type="text"
               name="question"
@@ -80,7 +85,10 @@ const PollForm = ({ redirectPath = "", onSubmit = () => null }) => {
             />
           </div>
           <div className="form-group flex flex-col w-full">
-            <label htmlFor="option">Add New Option</label>
+            <label htmlFor="option">
+              Add New Option{" "}
+              <span className="text-xs text-gray-500">min 2 and max 6</span>
+            </label>
             <div className="flex gap-3">
               <input
                 type="text"
@@ -94,25 +102,29 @@ const PollForm = ({ redirectPath = "", onSubmit = () => null }) => {
               />
               <button
                 type="button"
-                className="px-4 py-2 bg-green-400 text-black hover:ring-2 rounded ring-green-700"
+                className="px-4 py-2 bg-green-400 text-black duration-300 hover:ring-2 rounded ring-green-500"
                 disabled={!isValid || isSubmitting}
                 onClick={() => {
                   if (newOption) {
-                    setOptions([...options, newOption]);
-                    setNewOption("");
+                    if (options.length < 6) {
+                      setOptions([...options, newOption]);
+                      setNewOption("");
+                    } else {
+                      toast.error("You can add at most six options!");
+                    }
                   } else {
-                    toast.error("Please enter an option");
+                    toast.error("Please enter an option!");
                   }
                 }}
               >
-                Add
+                <FiPlus />
               </button>
             </div>
           </div>
           {options.length > 0 && (
-            <div className="option-container flex flex-col gap-3">
+            <div className="cursor-context-menu option-container flex flex-col gap-3 w-full overflow-y-scroll max-h-1/3 h-auto options-container py-1">
               {options.map((option, index) => (
-                <div key={index} className="flex gap-3">
+                <div key={index} className="flex gap-3 ">
                   <input
                     type="text"
                     name="option"
@@ -129,7 +141,7 @@ const PollForm = ({ redirectPath = "", onSubmit = () => null }) => {
                   />
                   <button
                     type="button"
-                    className="px-4 py-2 bg-red-400 text-black hover:ring-2 rounded ring-red-700"
+                    className="px-4 py-2 duration-300 bg-red-400 text-black hover:ring-2 rounded ring-red-500"
                     disabled={!isValid || isSubmitting}
                     onClick={() => {
                       const newOptions = [...options];
@@ -137,7 +149,7 @@ const PollForm = ({ redirectPath = "", onSubmit = () => null }) => {
                       setOptions(newOptions);
                     }}
                   >
-                    Remove
+                    <FiX />
                   </button>
                 </div>
               ))}
@@ -157,7 +169,12 @@ const PollForm = ({ redirectPath = "", onSubmit = () => null }) => {
             />
           </div>
           <div className="form-group flex flex-col w-full">
-            <label htmlFor="option1">Visibility</label>
+            <label htmlFor="option1">
+              Visibility{" "}
+              <span className="text-xs text-gray-500">
+                public polls will be listed on site
+              </span>
+            </label>
             <select
               name="visibility"
               id="visibility"
@@ -172,7 +189,7 @@ const PollForm = ({ redirectPath = "", onSubmit = () => null }) => {
           </div>
           <button
             type="submit"
-            className="px-4 py-2 bg-green-400 text-black hover:ring-2 rounded ring-green-700"
+            className="px-4 py-2 bg-green-400 duration-300 text-black hover:ring-2 rounded ring-green-500"
             disabled={!isValid || isSubmitting}
           >
             Create Poll
