@@ -76,7 +76,7 @@ const PollForm = ({ redirectPath = "", onSubmit = () => null }) => {
             />
           </div>
           <div className="form-group flex flex-col w-full">
-            <label htmlFor="option1">Add New Option</label>
+            <label htmlFor="option">Add New Option</label>
             <div className="flex gap-3">
               <input
                 type="text"

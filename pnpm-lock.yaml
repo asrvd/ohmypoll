@@ -2,6 +2,8 @@ lockfileVersion: 5.4
 
 specifiers:
   '@prisma/client': ^4.0.0
+  '@types/react': ^18.0.14
+  '@types/react-dom': ^18.0.5
   autoprefixer: ^10.4.7
   axios: ^0.27.2
   eslint: 8.19.0
@@ -31,6 +33,8 @@ dependencies:
   yup: 0.32.11
 
 devDependencies:
+  '@types/react': 18.0.14
+  '@types/react-dom': 18.0.5
   autoprefixer: 10.4.7_postcss@8.4.14
   eslint: 8.19.0
   eslint-config-next: 12.2.0_eslint@8.19.0
@@ -273,6 +277,28 @@ packages:
   /@types/lodash/4.14.182:
     resolution: {integrity: sha512-/THyiqyQAP9AfARo4pF+aCGcyiQ94tX/Is2I7HofNRqoYLgN1PBoOWu2/zTA5zMxzP5EFutMtWtGAFRKUe961Q==}
     dev: false
+
+  /@types/prop-types/15.7.5:
+    resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
+    dev: true
+
+  /@types/react-dom/18.0.5:
+    resolution: {integrity: sha512-OWPWTUrY/NIrjsAPkAk1wW9LZeIjSvkXRhclsFO8CZcZGCOg2G0YZy4ft+rOyYxy8B7ui5iZzi9OkDebZ7/QSA==}
+    dependencies:
+      '@types/react': 18.0.14
+    dev: true
+
+  /@types/react/18.0.14:
+    resolution: {integrity: sha512-x4gGuASSiWmo0xjDLpm5mPb52syZHJx02VKbqUKdLmKtAwIh63XClGsiTI1K6DO5q7ox4xAsQrU+Gl3+gGXF9Q==}
+    dependencies:
+      '@types/prop-types': 15.7.5
+      '@types/scheduler': 0.16.2
+      csstype: 3.1.0
+    dev: true
+
+  /@types/scheduler/0.16.2:
+    resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
+    dev: true
 
   /@typescript-eslint/parser/5.30.3_eslint@8.19.0:
     resolution: {integrity: sha512-ddwGEPC3E49DduAUC8UThQafHRE5uc1NE8jdOgl+w8/NrYF50MJQNeD3u4JZrqAXdY9rJz0CdQ9HpNME20CzkA==}
@@ -607,6 +633,10 @@ packages:
     resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==}
     engines: {node: '>=4'}
     hasBin: true
+    dev: true
+
+  /csstype/3.1.0:
+    resolution: {integrity: sha512-uX1KG+x9h5hIJsaKR9xHUeUraxf8IODOwq9JLNPq6BwB04a/xgpq3rcx47l5BZu5zBPlgD342tdke3Hom/nJRA==}
     dev: true
 
   /damerau-levenshtein/1.0.8:
