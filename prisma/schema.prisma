@@ -1,0 +1,33 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
+}
+
+model Option {
+  id     Int    @id @default(autoincrement())
+  pollID String
+  number Int
+  poll   Poll   @relation(fields: [pollID], references: [id])
+  text   String
+  votes  Int    @default(0)
+}
+
+model Poll {
+  id         String   @id
+  title      String
+  options    Option[]
+  visibility String   @default("public")
+  createdBy  String   @default("anonymous")
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now())
+  upvotes    Int      @default(0)
+}
