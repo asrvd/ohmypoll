@@ -67,17 +67,17 @@ export default function Results({ poll, options }: Props) {
   }, [poll?.id])
   if (router.isFallback) {
     return (
-      <div className="flex flec-col justify-center items-center w-screen h-screen">
+      <div className="dark:bg-slate-800 bg-gray-100 flex flec-col justify-center items-center w-screen h-screen dark:text-gray-300 text-gray-800">
         Loading...
       </div>
     );
   }
   if (hasVoted === false) {
     return (
-      <div className="flex flex-col justify-center items-center w-screen h-screen gap-3">
-        <h2 className="text-2xl text-gray-500">You haven{`'`}t voted for this poll yet!</h2>
+      <div className="dark:bg-slate-800 bg-gray-100 flex flex-col justify-center items-center w-screen h-screen gap-3">
+        <h2 className="text-2xl text-gray-500 dark:text-gray-300">You haven{`'`}t voted for this poll yet!</h2>
         <p
-          className="text-sm underline decoration-dotted underline-offset-4 cursor-pointer text-green-400"
+          className="text-sm underline decoration-dotted underline-offset-4 cursor-pointer text-green-400 dark:text-green-300"
           onClick={() => router.push(`/poll/${poll?.id}`)}
         >
           vote for poll #{poll?.id}
@@ -86,21 +86,21 @@ export default function Results({ poll, options }: Props) {
     );
   }
   return (
-    <div className="flex flex-col justify-center items-center w-screen h-screen p-3 font-sans relative">
-      <div className="absolute text-green-500 top-0 p-2 flex justify-left text-sm items-left w-full lg:w-2/3 md:w-2/3">
+    <div className="flex flex-col dark:bg-slate-800 bg-gray-100 justify-center items-center w-screen h-screen p-3 font-sans relative">
+      <div className="absolute text-green-500 dark:text-green-300 top-0 p-2 flex justify-left text-sm items-left w-full lg:w-2/3 md:w-2/3">
         <Link href="/">
           <a>
             . . /{" "}
-            <span className="cursor-default text-gray-400">
+            <span className="cursor-default text-gray-400 dark:text-gray-300">
               poll / results / {poll?.id}
             </span>
           </a>
         </Link>
       </div>
       <div className="flex flex-col justify-center items-left w-full h-full lg:w-2/3 md:w-2/3 lg:h-2/3 p-2 gap-3">
-        <h1 className="text-2xl font-bold">
+        <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-200">
           {poll?.title}{" "}
-          <span className="text-sm text-gray-500 underline decoration-dotted underline-offset-2">
+          <span className="text-sm text-gray-500 dark:text-gray-300 underline decoration-dotted underline-offset-2">
             {poll?.visibility}
           </span>
         </h1>
@@ -108,9 +108,9 @@ export default function Results({ poll, options }: Props) {
           {options?.map((option: Option) => {
             return (
               <div key={option.id} className="flex flex-col">
-                <label htmlFor="poll-result-bar">{option.votes} votes</label>
+                <label htmlFor="poll-result-bar" className="text-gray-800 dark:text-gray-200">{option.votes} votes</label>
                 <button
-                  className={`flex shadow-md justify-between items-center rounded ring-2 ring-green-500 px-4 py-2 w-full cursor-default h-full poll-result-bar`}
+                  className={`flex shadow-md justify-between items-center rounded ring-2 ring-green-500 px-4 py-2 w-full cursor-default h-full poll-result-bar text-gray-800`}
                   key={option.id}
                   name="poll-result-bar"
                   style={{
@@ -136,18 +136,18 @@ export default function Results({ poll, options }: Props) {
             );
           })}
         </div>
-        <p className="text-[0.65rem] lg:text-sm md:text-sm flex-wrap justify-center self-center items-center w-screen text-center absolute bottom-8 p-2">
-          <span className="text-gray-500 text-[0.65rem] lg:text-sm md:text-sm underline decoration-dotted underline-offset-2">
+        <p className="text-[0.65rem] lg:text-sm md:text-sm flex-wrap justify-center self-center items-center w-screen text-center absolute bottom-8 p-2 text-gray-800 dark:text-gray-200">
+          <span className="text-gray-500 dark:text-gray-300 text-[0.65rem] lg:text-sm md:text-sm underline decoration-dotted underline-offset-2">
             created by
           </span>{" "}
           {poll?.createdBy}
           {" | "}
-          <span className="text-gray-500 text-[0.65rem] lg:text-sm md:text-sm underline decoration-dotted underline-offset-2">
+          <span className="text-gray-500 dark:text-gray-300 text-[0.65rem] lg:text-sm md:text-sm underline decoration-dotted underline-offset-2">
             {poll?.upvotes === 1 ? 'upvote' : 'upvotes'}
           </span>{" "}
           {poll?.upvotes}
           {" | "}
-          <span className="text-gray-500 text-[0.65rem] lg:text-sm md:text-sm underline decoration-dotted underline-offset-2">
+          <span className="text-gray-500 dark:text-gray-300 text-[0.65rem] lg:text-sm md:text-sm underline decoration-dotted underline-offset-2">
             created on
           </span>{" "}
           {new Date(poll?.createdAt).toLocaleDateString()}{" "}

@@ -138,21 +138,21 @@ export default function PollPage(props: Props) {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center w-screen h-screen p-3 font-sans relative">
-      <div className="absolute text-green-500 top-0 p-2 flex justify-left text-sm items-left w-full lg:w-2/3 md:w-2/3">
+    <div className="dark:bg-slate-800 bg-gray-100 flex flex-col justify-center items-center w-screen h-screen p-3 font-sans relative">
+      <div className="absolute text-green-500 dark:text-green-300 top-0 p-2 flex justify-left text-sm items-left w-full lg:w-2/3 md:w-2/3">
         <Link href="/">
           <a>
             . . /{" "}
-            <span className="cursor-default text-gray-400">
+            <span className="cursor-default text-gray-400 dark:text-gray-300">
               poll / {props?.poll?.id}
             </span>
           </a>
         </Link>
       </div>
       <div className="flex flex-col justify-center items-left w-full h-full lg:w-2/3 md:w-2/3 lg:h-2/3 p-2 gap-3">
-        <h1 className="text-xl lg:text-2xl font-bold">
+        <h1 className="text-xl dark:text-gray-200 lg:text-2xl font-bold">
           {props?.poll?.title}{" "}
-          <span className="text-sm text-gray-500 underline decoration-dotted underline-offset-2">
+          <span className="text-sm text-gray-500 dark:text-gray-300 underline decoration-dotted underline-offset-2">
             {props?.poll?.visibility}
           </span>
         </h1>
@@ -161,7 +161,7 @@ export default function PollPage(props: Props) {
             return (
               <button
                 onClick={() => addVote(option.id, option.pollID)}
-                className="flex duration-300 relative justify-between items-center rounded bg-green-300 hover:ring-2 ring-green-400 cursor-pointer px-4 py-2 w-full h-full shadow-md"
+                className="flex duration-300 relative justify-between text-gray-700 items-center rounded bg-green-300 hover:ring-2 ring-green-400 cursor-pointer px-4 py-2 w-full h-full shadow-md"
                 key={option.id}
               >
                 <span className="text-sm lg:text-md md:text-md font-sans font-bold">
@@ -178,7 +178,7 @@ export default function PollPage(props: Props) {
           {hasVoted === true && (
             <>
               <p
-                className="text-gray-500 underline decoration-dotted underline-offset-2 cursor-pointer"
+                className="text-gray-500 dark:text-gray-300 underline decoration-dotted underline-offset-2 cursor-pointer"
                 onClick={() => router.push(`/poll/results/${props?.poll?.id}`)}
               >
                 view results
@@ -187,22 +187,22 @@ export default function PollPage(props: Props) {
             </>
           )}
           <p
-            className="cursor-pointer"
+            className="cursor-pointer dark:text-gray-200"
             onClick={() => addUpVote(props?.poll?.id)}
           >
             {upvotes}△{" "}
-            <span className="text-gray-500 underline decoration-dotted underline-offset-2">
+            <span className="text-gray-500 dark:text-gray-300 underline decoration-dotted underline-offset-2">
               upvote
             </span>
           </p>
         </div>
-        <p className="text-[0.8rem] lg:text-sm md:text-sm flex-wrap justify-center self-center items-center w-screen text-center absolute bottom-8 p-2">
-          <span className="text-gray-500 underline decoration-dotted underline-offset-2">
+        <p className="text-[0.8rem] lg:text-sm md:text-sm flex-wrap justify-center self-center items-center w-screen text-center absolute bottom-8 p-2 text-gray-700 dark:text-gray-200">
+          <span className="text-gray-500 dark:text-gray-300 underline decoration-dotted underline-offset-2">
             created by
           </span>{" "}
           {props?.poll?.createdBy}
           {" | "}
-          <span className="text-gray-500 underline decoration-dotted underline-offset-2">
+          <span className="text-gray-500 dark:text-gray-300 underline decoration-dotted underline-offset-2">
             created on
           </span>{" "}
           {new Date(props?.poll?.createdAt).toLocaleDateString()}{" "}

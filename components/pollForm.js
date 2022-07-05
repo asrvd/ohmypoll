@@ -73,28 +73,28 @@ const PollForm = ({ redirectPath = "", onSubmit = () => null }) => {
       {({ isSubmitting, isValid }) => (
         <Form className="flex flex-col gap-3 w-full h-full font-sans">
           <div className="form-group flex flex-col w-full">
-            <label htmlFor="question">Question</label>
+            <label htmlFor="question" className="text-gray-600 dark:text-gray-200">Question</label>
             <input
               type="text"
               name="question"
               id="question"
-              className="form-control px-4 py-2 focus:outline-none border-gray-400 border-2 rounded"
+              className="form-control text-gray-700 placeholder:text-gray-600 px-4 py-2 focus:outline-none dark:bg-gray-300 disabled:bg-gray-500 border-gray-400 border-2 rounded"
               placeholder="Enter question"
               disabled={disabled}
               onChange={(e) => setQuestion(e.target.value)}
             />
           </div>
           <div className="form-group flex flex-col w-full">
-            <label htmlFor="option">
+            <label htmlFor="option" className="text-gray-600 dark:text-gray-200">
               Add New Option{" "}
-              <span className="text-xs text-gray-500">min 2 and max 6</span>
+              <span className="text-xs text-gray-500 dark:text-gray-300">min 2 and max 6</span>
             </label>
             <div className="flex gap-3">
               <input
                 type="text"
                 name="option"
                 id="option"
-                className="form-control px-4 py-2 focus:outline-none border-gray-400 border-2 rounded w-full"
+                className="form-control px-4 py-2 text-gray-800 placeholder:text-gray-700 focus:outline-none border-gray-400 dark:bg-gray-300 disabled:bg-gray-500 border-2 rounded w-full"
                 placeholder="Enter option 1"
                 disabled={disabled}
                 onChange={(e) => setNewOption(e.target.value)}
@@ -102,7 +102,7 @@ const PollForm = ({ redirectPath = "", onSubmit = () => null }) => {
               />
               <button
                 type="button"
-                className="px-4 py-2 bg-green-400 text-black duration-300 hover:ring-2 rounded ring-green-500"
+                className="px-4 py-2 bg-green-400 text-gray-800 duration-300 hover:ring-2 rounded ring-green-500"
                 disabled={!isValid || isSubmitting}
                 onClick={() => {
                   if (newOption) {
@@ -129,7 +129,7 @@ const PollForm = ({ redirectPath = "", onSubmit = () => null }) => {
                     type="text"
                     name="option"
                     id="option"
-                    className="form-control px-4 py-2 focus:outline-none border-gray-400 border-2 rounded w-full"
+                    className="form-control text-gray-800 placeholder:text-gray-700 px-4 py-2 focus:outline-none dark:bg-gray-300 disabled:bg-gray-500 border-gray-400 border-2 rounded w-full"
                     placeholder={`Enter option ${index + 1}`}
                     disabled={disabled}
                     value={option}
@@ -141,7 +141,7 @@ const PollForm = ({ redirectPath = "", onSubmit = () => null }) => {
                   />
                   <button
                     type="button"
-                    className="px-4 py-2 duration-300 bg-red-400 text-black hover:ring-2 rounded ring-red-500"
+                    className="px-4 py-2 duration-300 bg-red-400 text-gray-800 hover:ring-2 rounded ring-red-500"
                     disabled={!isValid || isSubmitting}
                     onClick={() => {
                       const newOptions = [...options];
@@ -156,12 +156,12 @@ const PollForm = ({ redirectPath = "", onSubmit = () => null }) => {
             </div>
           )}
           <div className="form-group flex flex-col w-full">
-            <label htmlFor="option1">Created By</label>
+            <label htmlFor="option1" className="text-gray-600 dark:text-gray-200">Created By</label>
             <input
               type="text"
               name="createdBy"
               id="createdBy"
-              className="form-control px-4 py-2 focus:outline-none border-gray-400 border-2 rounded w-full"
+              className="form-control px-4 py-2 text-gray-800 placeholder:text-gray-700 dark:bg-gray-300 disabled:bg-gray-500 focus:outline-none border-gray-400 border-2 rounded w-full"
               placeholder="Enter your name"
               disabled={disabled}
               value={cBy}
@@ -169,16 +169,16 @@ const PollForm = ({ redirectPath = "", onSubmit = () => null }) => {
             />
           </div>
           <div className="form-group flex flex-col w-full">
-            <label htmlFor="option1">
+            <label htmlFor="visibility" className="text-gray-600 dark:text-gray-200">
               Visibility{" "}
-              <span className="text-xs text-gray-500">
+              <span className="text-xs text-gray-500 dark:text-gray-300">
                 public polls will be listed on site
               </span>
             </label>
             <select
               name="visibility"
               id="visibility"
-              className="form-control px-4 py-2 focus:outline-none border-gray-400 border-2 rounded w-full"
+              className="form-control text-gray-800 placeholder:text-gray-600 px-4 py-2 focus:outline-none dark:bg-gray-300 disabled:bg-gray-500 border-gray-400 border-2 rounded w-full"
               disabled={disabled}
               value={visibility}
               onChange={(e) => setVisibility(e.target.value)}
