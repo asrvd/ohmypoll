@@ -55,7 +55,7 @@ export async function getStaticProps({ params }: any) {
         poll: JSON.parse(JSON.stringify(poll)),
         options: JSON.parse(JSON.stringify(options)),
       },
-      revaildate: 5,
+      revalidate: 5,
     };
   }
 
