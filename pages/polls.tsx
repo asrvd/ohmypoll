@@ -35,6 +35,7 @@ export async function getStaticProps() {
       pollsByUpvotes: JSON.parse(JSON.stringify(pollsByUpvotes)),
       pollsByDate: JSON.parse(JSON.stringify(pollsByDate)),
     },
+    revalidate: 5,
   };
 }
 
