@@ -1,5 +1,4 @@
 import { Poll } from "@prisma/client";
-import Link from "next/link";
 import { useRouter } from "next/router";
 
 type Props = {
@@ -8,7 +7,7 @@ type Props = {
 
 export default function PollCard(props: Props) {
   const router = useRouter();
-  const { title, createdAt, upvotes, createdBy, id } = props?.poll;
+  const { title, createdAt, upvotes, createdBy, id, votes } = props?.poll;
   return (
     <div
       className="flex flex-col w-full h-full gap-3 shadow-lg p-5 cursor-pointer border-2 border-gray-500 rounded justify-between"
@@ -27,6 +26,8 @@ export default function PollCard(props: Props) {
         <span className="text-sm text-gray-500">
           on {new Date(createdAt).toLocaleDateString()}
         </span>
+        {" | "}
+        <span className="text-sm text-gray-500">{votes} {votes === 1 ? 'person' : 'people'} voted</span>
       </div>
     </div>
   );

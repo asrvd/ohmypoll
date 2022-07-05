@@ -4,6 +4,8 @@ import { Option } from "@prisma/client";
 import SiteFooter from "../../../components/footer";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
+import { checkForVote } from "../../../lib/checkForVote";
 
 const prisma = new PrismaClient();
 
@@ -58,11 +60,28 @@ export default function Results({ poll, options }: Props) {
   const totalVotes = options?.reduce((acc, option) => {
     return acc + option.votes;
   }, 0);
+  const [hasVoted, setHasVoted] = useState(false);
   const router = useRouter();
+  useEffect(() => {
+    setHasVoted(checkForVote(poll?.id))
+  }, [poll?.id])
   if (router.isFallback) {
     return (
       <div className="flex flec-col justify-center items-center w-screen h-screen">
         Loading...
+      </div>
+    );
+  }
+  if (hasVoted === false) {
+    return (
+      <div className="flex flex-col justify-center items-center w-screen h-screen gap-3">
+        <h2 className="text-2xl text-gray-500">You haven{`'`}t voted for this poll yet!</h2>
+        <p
+          className="text-sm underline decoration-dotted underline-offset-4 cursor-pointer text-green-400"
+          onClick={() => router.push(`/poll/${poll?.id}`)}
+        >
+          vote for poll #{poll?.id}
+        </p>
       </div>
     );
   }
@@ -124,7 +143,7 @@ export default function Results({ poll, options }: Props) {
           {poll?.createdBy}
           {" | "}
           <span className="text-gray-500 text-[0.65rem] lg:text-sm md:text-sm underline decoration-dotted underline-offset-2">
-            upvotes
+            {poll?.upvotes === 1 ? 'upvote' : 'upvotes'}
           </span>{" "}
           {poll?.upvotes}
           {" | "}

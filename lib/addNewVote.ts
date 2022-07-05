@@ -3,7 +3,9 @@ export function addNewVote(voteID: string) {
   if (allVotes) {
     const votes = JSON.parse(allVotes);
     votes.push(voteID);
+    console.log(votes);
     localStorage.setItem("votes", JSON.stringify(votes));
+  } else {
+    localStorage.setItem("votes", JSON.stringify([voteID]));
   }
-  localStorage.setItem("votes", JSON.stringify([voteID]));
 }

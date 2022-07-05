@@ -16,6 +16,19 @@ module.exports = {
         DEFAULT: "0 2px 4px var(--tw-shadow)",
         lg: "0 8px 16px var(--tw-shadow)",
       },
+      keyframes: {
+        "progress-bar-fill": {
+          "0%": {
+            transform: "scaleX(0)",
+          },
+          "100%": {
+            transform: "scaleX(1)",
+          },
+        },
+      },
+      animation: {
+        "progress-bar-fill": "progress-bar-fill 3s ease-in-out",
+      },
     },
   },
   plugins: [

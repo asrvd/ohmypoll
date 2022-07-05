@@ -18,7 +18,7 @@ const prisma = new PrismaClient();
 export type Props = {
   poll: Poll;
   options: Option[];
-}
+};
 
 export async function getStaticPaths() {
   const polls = await prisma.poll.findMany({
@@ -82,9 +82,14 @@ export default function PollPage(props: Props) {
       let toastId;
       toastId = toast.loading("Adding your vote...");
       try {
-        axios.post("/api/vote", {
-          id: id,
-        });
+        Promise.all([
+          axios.post("/api/vote", {
+            id: id,
+          }),
+          axios.post("/api/votes", {
+            id: pollId,
+          }),
+        ]);
         toast.success("Your vote has been added!", {
           id: toastId,
         });

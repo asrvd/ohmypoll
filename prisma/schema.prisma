@@ -30,4 +30,5 @@ model Poll {
   createdAt  DateTime @default(now())
   updatedAt  DateTime @default(now())
   upvotes    Int      @default(0)
+  votes      Int      @default(0)
 }
