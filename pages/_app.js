@@ -23,14 +23,14 @@ function MyApp({ Component, pageProps }) {
         <meta property="og:title" content="Oh My Poll!"></meta>
         <meta
           property="og:description"
-          content="🗳 Create and share your own polls!"
+          content="🗳️ Create and share your own polls!"
         ></meta>
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="theme-color" content="#22c55e" />
         <meta name="twitter:title" content="Oh My Poll!" />
         <meta
           name="twitter:description"
-          content="🗳 Create and share your own polls!"
+          content="🗳️ Create and share your own polls!"
         />
         <meta name="twitter:image" content="https://s6.imgcdn.dev/BodXM.png" />
       </Head>
