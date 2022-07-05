@@ -12,30 +12,31 @@ type Props = {
   pollsByDate: Poll[];
 };
 
-export async function getStaticProps() {
+async function getPolls() {
   const pollsByUpvotes = await prisma.poll.findMany({
-    where: {
-      visibility: "public",
-    },
     orderBy: {
       upvotes: "desc",
     },
   });
   const pollsByDate = await prisma.poll.findMany({
-    where: {
-      visibility: "public",
-    },
     orderBy: {
       createdAt: "desc",
     },
   });
+  return {
+    pollsByUpvotes,
+    pollsByDate,
+  };
+}
+
+export async function getServerSideProps() {
+  const { pollsByUpvotes, pollsByDate } = await getPolls();
 
   return {
     props: {
       pollsByUpvotes: JSON.parse(JSON.stringify(pollsByUpvotes)),
       pollsByDate: JSON.parse(JSON.stringify(pollsByDate)),
     },
-    revalidate: 2,
   };
 }
 
