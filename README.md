@@ -1,34 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Oh My Poll
 
-## Getting Started
+create and share polls privately or publicly -- its fast and free!
 
-First, run the development server:
+### Tech Stack
+- Next.js
+- TailwindCSS
+- Prisma
+- PlanetScale
 
+### External Dependencies
+- formik
+- nanoid
+- react-icons
+- nprogress
+- react-hot-toast
+
+### Run Locally
+- Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
+git clone https://github.com/asheeeshh/ohmypoll.git
+```
+- Create a database on [planetscale](https://planetscale.com) and set the `DATABASE_URL` environment variable in a `.env` file, see [`.env.example`](/.env.example) for example. You can also use this command.
+```bash
+echo "DATABASE_URL=your_databse_url" > .env
+```
+- Install dependencies
+```bash
+cd ohmypoll
+pnpm i # or npm i
+```
+- Fire up prisma
+```bash
+pnpm dlx prisma db push # or npx prisma db push
+``` 
+- Run the app
+```bash
+pnpm run dev # or npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### License 
+[MIT License](LICENSE)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### Contributing
+- Fork the repository
+- Create a new branch
+- Make your changes
+- Commit your changes
+- Push your changes to the main branch
+- Open a pull request
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### Ending Note
+- If you have any questions, suggestions or bug reports please open an issue.
+- Leave a star if you like the project.
+- If you like this project, please consider [supporting](https://www.buymeacoffee.com/asheeshh) me.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
