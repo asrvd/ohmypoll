@@ -73,7 +73,12 @@ const PollForm = ({ redirectPath = "", onSubmit = () => null }) => {
       {({ isSubmitting, isValid }) => (
         <Form className="flex flex-col gap-3 w-full h-full font-sans">
           <div className="form-group flex flex-col w-full">
-            <label htmlFor="question" className="text-gray-600 dark:text-gray-200">Question</label>
+            <label
+              htmlFor="question"
+              className="text-gray-600 dark:text-gray-200"
+            >
+              Question
+            </label>
             <input
               type="text"
               name="question"
@@ -85,9 +90,14 @@ const PollForm = ({ redirectPath = "", onSubmit = () => null }) => {
             />
           </div>
           <div className="form-group flex flex-col w-full">
-            <label htmlFor="option" className="text-gray-600 dark:text-gray-200">
+            <label
+              htmlFor="option"
+              className="text-gray-600 dark:text-gray-200"
+            >
               Add New Option{" "}
-              <span className="text-xs text-gray-500 dark:text-gray-300">min 2 and max 6</span>
+              <span className="text-xs text-gray-500 dark:text-gray-300">
+                min 2 and max 6
+              </span>
             </label>
             <div className="flex gap-3">
               <input
@@ -156,7 +166,12 @@ const PollForm = ({ redirectPath = "", onSubmit = () => null }) => {
             </div>
           )}
           <div className="form-group flex flex-col w-full">
-            <label htmlFor="option1" className="text-gray-600 dark:text-gray-200">Created By</label>
+            <label
+              htmlFor="option1"
+              className="text-gray-600 dark:text-gray-200"
+            >
+              Created By
+            </label>
             <input
               type="text"
               name="createdBy"
@@ -169,7 +184,10 @@ const PollForm = ({ redirectPath = "", onSubmit = () => null }) => {
             />
           </div>
           <div className="form-group flex flex-col w-full">
-            <label htmlFor="visibility" className="text-gray-600 dark:text-gray-200">
+            <label
+              htmlFor="visibility"
+              className="text-gray-600 dark:text-gray-200"
+            >
               Visibility{" "}
               <span className="text-xs text-gray-500 dark:text-gray-300">
                 public polls will be listed on site

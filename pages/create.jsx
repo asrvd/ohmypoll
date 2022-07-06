@@ -53,7 +53,9 @@ export default function Create() {
         </Link>
       </div>
       <div className="flex flex-col justify-center items-center w-full lg:w-1/2 md:w-2/3 h-3/4 p-2">
-        <h1 className="text-2xl font-bold dark:text-gray-200 text-gray-800">Create a poll</h1>
+        <h1 className="text-2xl font-bold dark:text-gray-200 text-gray-800">
+          Create a poll
+        </h1>
         <PollForm onSubmit={addPoll} redirectPath={`/poll/${id}`} />
       </div>
       <SiteFooter />

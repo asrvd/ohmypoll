@@ -63,8 +63,8 @@ export default function Results({ poll, options }: Props) {
   const [hasVoted, setHasVoted] = useState(false);
   const router = useRouter();
   useEffect(() => {
-    setHasVoted(checkForVote(poll?.id))
-  }, [poll?.id])
+    setHasVoted(checkForVote(poll?.id));
+  }, [poll?.id]);
   if (router.isFallback) {
     return (
       <div className="dark:bg-slate-800 bg-gray-100 flex flec-col justify-center items-center w-screen h-screen dark:text-gray-300 text-gray-800">
@@ -75,7 +75,9 @@ export default function Results({ poll, options }: Props) {
   if (hasVoted === false) {
     return (
       <div className="dark:bg-slate-800 bg-gray-100 flex flex-col justify-center items-center w-screen h-screen gap-3">
-        <h2 className="text-2xl text-gray-500 dark:text-gray-300">You haven{`'`}t voted for this poll yet!</h2>
+        <h2 className="text-2xl text-gray-500 dark:text-gray-300">
+          You haven{`'`}t voted for this poll yet!
+        </h2>
         <p
           className="text-sm underline decoration-dotted underline-offset-4 cursor-pointer text-green-400 dark:text-green-300"
           onClick={() => router.push(`/poll/${poll?.id}`)}
@@ -108,18 +110,22 @@ export default function Results({ poll, options }: Props) {
           {options?.map((option: Option) => {
             return (
               <div key={option.id} className="flex flex-col">
-                <label htmlFor="poll-result-bar" className="text-gray-800 dark:text-gray-200">{option.votes} votes</label>
+                <label
+                  htmlFor="poll-result-bar"
+                  className="text-gray-800 dark:text-gray-200"
+                >
+                  {option.votes} votes
+                </label>
                 <button
                   className={`flex shadow-md justify-between items-center rounded ring-2 ring-green-500 px-4 py-2 w-full cursor-default h-full poll-result-bar text-gray-800`}
                   key={option.id}
                   name="poll-result-bar"
                   style={{
-                    backgroundImage:
-                      `linear-gradient(to right, #22c55e 0%, #22c55e ${
-                        (option.votes / totalVotes) * 100
-                      }%, #4ade80 ${
-                        (option.votes / totalVotes) * 100
-                      }%, #4ade80 100%)`,
+                    backgroundImage: `linear-gradient(to right, #22c55e 0%, #22c55e ${
+                      (option.votes / totalVotes) * 100
+                    }%, #4ade80 ${
+                      (option.votes / totalVotes) * 100
+                    }%, #4ade80 100%)`,
                   }}
                 >
                   <span className="text-sm lg:text-md md:text-md font-sans font-bold">
@@ -143,7 +149,7 @@ export default function Results({ poll, options }: Props) {
           {poll?.createdBy}
           {" | "}
           <span className="text-gray-500 dark:text-gray-300 text-[0.65rem] lg:text-sm md:text-sm underline decoration-dotted underline-offset-2">
-            {poll?.upvotes === 1 ? 'upvote' : 'upvotes'}
+            {poll?.upvotes === 1 ? "upvote" : "upvotes"}
           </span>{" "}
           {poll?.upvotes}
           {" | "}
