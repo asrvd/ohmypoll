@@ -132,7 +132,7 @@ const PollForm = ({ redirectPath = "", onSubmit = () => null }) => {
             </div>
           </div>
           {options.length > 0 && (
-            <div className="cursor-context-menu option-container flex flex-col gap-3 w-full overflow-y-scroll max-h-1/3 h-auto options-container py-1">
+            <div className="cursor-context-menu option-container flex flex-col gap-3 w-full overflow-y-scroll max-h-44 h-auto options-container py-1">
               {options.map((option, index) => (
                 <div key={index} className="flex gap-3 ">
                   <input

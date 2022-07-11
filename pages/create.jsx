@@ -31,7 +31,7 @@ export default function Create() {
   }
 
   return (
-    <div className="dark:bg-slate-800 bg-gray-100 flex flex-col justify-center items-center w-screen h-screen p-3 font-sans relative">
+    <div className="dark:bg-slate-800 bg-gray-100 flex flex-col justify-center items-center w-screen min-h-screen p-3 pt-20 pb-10 font-sans relative">
       <button
         className="absolute top-8 right-8 text-xl hover:scale-110 duration-300 p-2 border-none bg-transparent rounded-full shadow-xl"
         onClick={switchTheme}
