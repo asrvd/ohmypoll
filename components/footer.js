@@ -6,7 +6,7 @@ const SiteFooter = () => {
         <span className="text-rose-600 dark:text-rose-300">{`<3`}</span> by{" "}
         <a
           className="underline cursor-pointer decoration-dotted underline-offset-2 text-green-600 dark:text-green-300"
-          href="https://github.com/asheeeshh"
+          href="https://github.com/asrvd"
         >
           ashish
         </a>
